@@ -127,6 +127,29 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+blog-env/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# VS Code settings (optional)
+.vscode/
+
+
+# Alembic migration versions (optional)
+alembic/versions/
+alembic.ini
+alembic/
+
+
+# OS / editor specific
+*.DS_Store
+*.swp
+
 
 # Spyder project settings
 .spyderproject
