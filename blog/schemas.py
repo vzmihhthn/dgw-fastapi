@@ -26,7 +26,7 @@ class User(BaseModel):
     password: str
 
     class Config: # Config class is used to configure the Pydantic model
-        from_attribute = True
+        from_attributes = True
     
     
 class UserResponse(User):
@@ -36,7 +36,7 @@ class UserResponse(User):
     updated_at: Optional[datetime]
     is_active: Optional[bool] = True # This is used to create an enum for
     class Config: # Config class is used to configure the Pydantic model
-        from_attribute = True
+        from_attributes = True
 
 # class User(BaseModel):
 #     name: str
@@ -62,4 +62,4 @@ class ShowBlog(BaseModel):
     body: str
     author: ShowUser
     class Config:
-        from_attribute = True # This is used to tell Pydantic to use the ORM mode
+        from_attributes = True # This is used to tell Pydantic to use the ORM mode
