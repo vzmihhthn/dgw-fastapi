@@ -144,6 +144,7 @@ __pycache__/
 alembic/versions/
 alembic.ini
 alembic/
+alembic
 
 
 # OS / editor specific
