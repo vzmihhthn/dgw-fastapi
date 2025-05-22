@@ -24,6 +24,7 @@ class User(BaseModel):
     gender : Optional[GenderEnum] = None # This is used to create an enum for
     user_name: str
     password: str
+    is_active: int
 
     class Config: # Config class is used to configure the Pydantic model
         from_attributes = True
@@ -55,6 +56,7 @@ class ShowUser(BaseModel):
     date_of_birth: Optional[str] = None
     gender : Optional[GenderEnum] = None # This is used to create an enum for
     # blogs: List[Blog] = [] # This is used to show the blogs of the user
+    is_active: int
     class Config:
         from_attributes = True
 

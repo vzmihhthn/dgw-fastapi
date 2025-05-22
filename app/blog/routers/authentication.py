@@ -6,9 +6,11 @@ from sqlalchemy.orm import Session
 from blog.hashing import Hash
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["Authentication"]
+)
 
-@router.post("/login", tags=["authentication"])
+@router.post("/login")
 def login(request: OAuth2PasswordRequestForm= Depends(), db: Session = Depends(database.get_db)):
     user = db.query(models.User).filter(models.User.user_name == request.username).first()
     if not user:

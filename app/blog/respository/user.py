@@ -57,14 +57,14 @@ def create_all_users(request: List[schemas.User], db: Session):
 
 
 def get_user_id(id, db: Session):
-    user_id = db.query(models.User).filter(models.User.id == id).first()
+    user_id = db.query(models.User).filter(models.User.user_id == id).first()
     if not user_id:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= f"User {id} not found")
     return user_id
 
 
 def delete_user(id, db: Session):
-    user_id = db.query(models.User).filter(models.User.id == id)
+    user_id = db.query(models.User).filter(models.User.user_id == id)
     if not user_id.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= f"User {id} not found")
     user_id.delete(synchronize_session=False)
@@ -72,7 +72,7 @@ def delete_user(id, db: Session):
     return {"message": f"User {id} deleted"}
 
 def update_user(id, request: schemas.User, db: Session):
-    user = db.query(models.User).filter(models.User.id == id)
+    user = db.query(models.User).filter(models.User.user_id == id)
     if not user.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= f"User {id} not found")
     user.update(request.dict())

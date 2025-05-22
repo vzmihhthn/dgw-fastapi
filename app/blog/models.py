@@ -25,18 +25,24 @@ class genderEnum(enum.Enum):# tạo enum cho giới tính
 class User(Base):
     __tablename__ = "users"
     user_id = Column(Integer, primary_key=True, index=True)
-    user_code = Column(String, unique=True, index=True) # tạo mã người
-    user_name = Column(String, unique=True, index=True) # tạo tên người dùng
-    name = Column(String, index=True)
+    # check id_user 
+    user_code = Column(String, unique=True, index=True) 
+    # check user_code
+    user_name = Column(String, unique=True, index=True) # 
+    # check user_name
+    name = Column(String, index=True) #
+    #  check full name
     email = Column(String, unique=True, index=True)
-    phone = Column(String, unique=True, index=True)
+    # check email, validate 
+    phone = Column(Integer, unique=True, index=True)
+    # check phone, validate - inter 
     address = Column(String, index=True)
     date_of_birth = Column(String, index=True)
-    gender = Column(Enum(genderEnum), index=True) # tạo enum cho giới tính
+    gender = Column(Enum(genderEnum), index=True) 
     password = Column(String, index=True) 
-    created_at = Column(DateTime, server_default=func.now()) # tạo thời gian tạo người dùng
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now()) # tạo thời gian cập nhật người dùng
-    is_active = Column(Integer, default=1) # tạo trạng thái người dùng
+    created_at = Column(DateTime, server_default=func.now()) 
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now()) 
+    is_active = Column(String, default=1) 
 
     blogs = relationship("Blog", back_populates="author") # tạo mối quan hệ giữa bảng User và bảng Blog
 
